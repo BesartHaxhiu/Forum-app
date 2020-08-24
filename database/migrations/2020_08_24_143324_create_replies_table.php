@@ -14,7 +14,15 @@ class CreateRepliesTable extends Migration
     public function up()
     {
         Schema::create('replies', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->text('body'); // reply must have a body
+
+            $table->integer('question_id')->unsigned(); //every reply must be conected with the question
+                                                        //dmth ktu lidhet reply me pytjen, qe useri bon reply.
+            
+            $table->integer('user_id'); // every reply can be by the user(including the owner of the question) so we need the user id
+
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->timestamps();
         });
     }
