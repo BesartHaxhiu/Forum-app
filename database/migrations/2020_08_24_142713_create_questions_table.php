@@ -14,7 +14,13 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('title');
+            $table->string('slug'); // url title si nwordpress
+            $table->text('body');
+
+            $table->integer('category_id')->unsigned(); // unsigned dmth qe ska nevoj per naj vler, ndesh pozitiv ndesh negativ
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }
