@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function question() // The relationship created for user model.
+    {
+        return $this->hasMany(Question::class);
+    }
 }
