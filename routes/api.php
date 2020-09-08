@@ -3,9 +3,11 @@
 Route::apiResource('/question', 'QuestionController'); // apiResource will get all the crud part of routes
                                                 // including Get, Post , Put, Delete
 
-
-
 Route::apiResource('/category', 'CategoryController');
+
+Route::apiResource('/question/{question}/reply', 'ReplyController'); // we have done the reply api, to do that we have to get first the question 
+                                                                    // at -> question <- we get the questions and with {questions} we get the question slug
+                                                                    // then with /reply we get the replies of that particular question
 /*
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
