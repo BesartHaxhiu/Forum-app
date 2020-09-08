@@ -3,6 +3,9 @@
 Route::apiResource('/question', 'QuestionController'); // apiResource will get all the crud part of routes
                                                 // including Get, Post , Put, Delete
 
+
+
+Route::apiResource('/category', 'CategoryController');
 /*
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
