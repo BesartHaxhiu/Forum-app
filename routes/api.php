@@ -8,6 +8,9 @@ Route::apiResource('/category', 'CategoryController');
 Route::apiResource('/question/{question}/reply', 'ReplyController'); // we have done the reply api, to do that we have to get first the question 
                                                                     // at -> question <- we get the questions and with {questions} we get the question slug
                                                                     // then with /reply we get the replies of that particular question
+
+Route::post('/like/{reply}','LikeController@LikeIt'); // the @likeit is a method created for the function 
+Route::delete('/like/{reply}','LikeController@unLikeIt');
 /*
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
