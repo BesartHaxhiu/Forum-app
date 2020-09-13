@@ -11,6 +11,19 @@ Route::apiResource('/question/{question}/reply', 'ReplyController'); // we have 
 
 Route::post('/like/{reply}','LikeController@LikeIt'); // the @likeit is a method created for the function 
 Route::delete('/like/{reply}','LikeController@unLikeIt');
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+    Route::post('login', 'AuthController@login');
+    Route::post('signup', 'AuthController@signup');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+});
 /*
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
