@@ -17,7 +17,8 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','signup']]);
+        // we created our own middleware -> JWT,so when smth goes wrong the exception written in JWT middleware displays
+        $this->middleware('JWT', ['except' => ['login','signup']]); // here we changed middleware from 'JWT' to auth:api because it didnt work on postman
     }
 
     /**
@@ -36,16 +37,19 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function signup(SignupRequest $request)
+
+    public function signup(Request $request)
     {
         User::create($request->all());
         return $this->login($request);
     }
+
     /**
      * Get the authenticated User.
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
     public function me()
     {
         return response()->json(auth()->user());

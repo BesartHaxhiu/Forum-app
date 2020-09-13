@@ -10,6 +10,20 @@ use App\Http\Resources\ReplyResource;
 
 class ReplyController extends Controller
 {
+        /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // we created our own middleware -> JWT,so when smth goes wrong the exception written in JWT middleware displays
+        $this->middleware('JWT', ['except' => ['index','show']]); // here we changed middleware from 'JWT' to auth:api because it didnt work on postman
+    
+        // this is the Reply Authentication with JWT - so we created our middleware JWT for exceptions
+        // then we authenticated by telling the user that if you are not login you can only access index & show part of reply
+        // but you can't reply to anyone if you are not logged in.
+    }
     /**
      * Display a listing of the resource.
      *

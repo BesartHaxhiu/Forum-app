@@ -8,6 +8,16 @@ use App\Http\Resources\QuestionResource;
 
 class QuestionController extends Controller
 {
+        /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // we created our own middleware -> JWT,so when smth goes wrong the exception written in JWT middleware displays
+        $this->middleware('JWT', ['except' => ['index','show']]); // here we changed middleware from 'JWT' to auth:api because it didnt work on postman
+    }
     /**
      * Display a listing of the resource.
      *
