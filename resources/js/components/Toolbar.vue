@@ -11,11 +11,27 @@
       <v-toolbar-title>Forum</v-toolbar-title>
 
       <v-spacer></v-spacer>
+    <div class="hidden-sm-and-down">
+
+        <router-link to="/forum">
+          <v-btn text>Forum</v-btn>
+        </router-link>      
+        
+        <router-link to="/askquestion">
+          <v-btn text>Ask Question</v-btn>      
+        </router-link>
+        
+        <router-link to="/category">
+          <v-btn text>Category</v-btn>
+        </router-link>
+        
+        <router-link to="/login">
+          <v-btn text>Login</v-btn>
+        </router-link>
+
+    </div>
+
     
-    <v-btn flat>Forum</v-btn>
-    <v-btn flat>Ask Question</v-btn>
-    <v-btn flat>Category</v-btn>
-    <v-btn flat>Login</v-btn>
 
 
       <v-btn icon>
